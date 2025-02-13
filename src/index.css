@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,body{
+    background-color: #F2F2F2;
+    color: #353C43;
+    font-family: 'Jost-Light', 'sans-serif';
+    font-size: 12px;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Jost-Light';
+    src: url('./assets/fonts/Jost-Light.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: 'Jost-Regular';
+    src: url('./assets/fonts/Jost-Regular.ttf') format('truetype');
+  }

@@ -5,8 +5,14 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        jost: ['Jost-Light', 'sans-serif'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
 }
 
