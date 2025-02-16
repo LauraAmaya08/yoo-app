@@ -1,5 +1,8 @@
 import {Link} from 'react-router-dom'
 import { motion } from 'framer-motion'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import {Size, SizeBox, Backgrounds} from '../styles/LoginAnRegister/styles'
 import { Button1 } from '../components/button1/Button1'
 import { Input } from '../components/Input/Input'
@@ -11,6 +14,27 @@ import Back from '../assets/img/icons/back.png'
 import Password from '../assets/img/icons/key.png'
 
 export const Login = () => {
+        const [username, setNombreUsername] = useState("");
+        const [password, setPassword] = useState("");
+        const [errors, setErrors] = useState({ username: "", password: "", general: "" });
+        const navegador = useNavigate();
+    
+    const handleLogin = async(e) => {
+        e.preventDefault();
+        if (!username || !password) {
+            setErrors({ ...errors, general: "Por favor, completa todos los campos." });
+            return;
+        }
+    
+        try {
+            const response = await axios.post("http://localhost:8080/auth/login", { username, password }, { withCredentials: true });
+            console.log("Entrada exitosa:", response.data);
+            setErrors({ username: "", password: "", general: "" });
+            navegador('/dashboard');
+        } catch (error) {
+            setErrors({ ...errors, general: "Usuario o contraseña incorrectos." });
+        }
+    };
     return(
         <>
         <div className={`${Backgrounds.BACKGROUND}`}>
@@ -28,7 +52,7 @@ export const Login = () => {
                         </div>
                     </section>
                     <section className='flex items-center justify-center w-full h-full'>
-                        <form action="" className='flex flex-col relative items-center justify-center w-full space-y-8 lg:space-y-16'>
+                        <form onSubmit={handleLogin} className='flex flex-col relative items-center justify-center w-full space-y-8 lg:space-y-16'>
                             <div className='flex flex-col items-center justify-center'>
                                 <h2 className={`${Size.EXTRALARGE}`}>Bienvenido a</h2>
                                 <img src={Logo} alt="logo" className='h-[50px] md:h-[60px] lg:h-[4rem] xl:h-[5.5rem] max-w-full' />
@@ -36,8 +60,10 @@ export const Login = () => {
                             </div>
 
                             <section className='flex flex-col items-center justify-center w-full xl:px-[1.5vh] space-y-3'>
-                            {Input('text','txtUser', 'Usuario', User)}
-                            {Input('password','txtPassword', 'Contraseña', Password)}
+                            <Input type="text" id="txtUser" placeholder="Usuario" value={username} onChange={(e) => setNombreUsername(e.target.value)} img={User}/>
+                            <Input type="password" id="txtPassword" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} img={Password}/>
+
+                            {errors.general && <p className="text-red-500 text-sm">{errors.general}</p>}
                             </section>
 
                             <section className='flex flex-col-reverse items-center justify-center md:flex-row md:justify-between w-[90%] md:w-[72%] xl:px-[1.5vh] mt-10 xl:mt-20 space-y-reverse space-y-3 md:space-y-0 md:space-x-5'>

@@ -12,6 +12,7 @@ import Telefono from '../assets/img/icons/telephone.png'
 import User from '../assets/img/icons/user.png'
 import FechaNac from '../assets/img/icons/birthday-cake.png'
 import Email from '../assets/img/icons/email.png'
+import axios from "axios";
 
 
 export const Register = () => {
@@ -19,7 +20,7 @@ export const Register = () => {
     const [telefono, setTelefono] = useState("");
     const [email, setEmail] = useState("");
     const [fechaNac, setFechaNac] = useState("");
-    const [user, setUser] = useState("");
+    const [nombreUser, setNombreUser] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({ fechaNac: "", password: "" });
 
@@ -58,6 +59,28 @@ export const Register = () => {
         setErrors((prevErrors) => ({ ...prevErrors, password: validarPassword(value) }));
     };
 
+    const handleRegister = async(e) => {
+        e.preventDefault();
+        const fechaNacError = validarFechaNac(fechaNac);
+        const passwordError = validarPassword(password);
+        if (fechaNacError || passwordError) {
+            setErrors({ fechaNac: fechaNacError, password: passwordError });
+            return;
+        }
+        const newUser = { nombreUser,nombre,password,email,fechaNac,telefono };
+        console.log("Registrando usuario:", newUser);
+    
+        try {
+            const response = await axios.post("http://localhost:8080/auth/register", newUser, {
+                withCredentials: true, 
+            });
+            console.log("Registro exitoso:", response.data);
+        } catch (error) {
+            console.error("Error en el registro:", error.response?.data || error.message);
+        }
+    };
+    
+
     return(
         <>
         <div className={`${Backgrounds.BACKGROUNDR}`}>
@@ -77,7 +100,7 @@ export const Register = () => {
                         </div>
                     </section>
                     <section className='flex w-full overflow-auto scrollbar-none'>
-                        <form className='flex flex-col w-full'>
+                        <form className='flex flex-col w-full' onSubmit={handleRegister}>
                             <section className='flex w-full'>
                                 <div className='relative w-full space-y-5 mx-5'>
                                     <div className='flex flex-col lg:flex-row justify-between space-y-5 lg:space-y-0'>
@@ -99,7 +122,7 @@ export const Register = () => {
                                     </div>
                                     <div className='flex flex-col lg:flex-row justify-between space-y-5 lg:space-y-0'>
                                         <div className='w-[100%] lg:w-[45%]'>
-                                            <Input2 type="text" id="txtUser" placeholder="Nombre de Usuario" value={user} onChange={(e) => setUser(e.target.value)} img={User}/>
+                                            <Input2 type="text" id="txtUser" placeholder="Nombre de Usuario" value={nombreUser} onChange={(e) => setNombreUser(e.target.value)} img={User}/>
                                         </div>
                                         <div className='w-[100%] lg:w-[45%]'>
                                             <Input2 type="password" id="txtPassword" placeholder="Contraseña" value={password} onChange={manejoPassword} img={Password}/>
