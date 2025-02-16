@@ -12,7 +12,7 @@ const SizeBox = {
 
 const Backgrounds = {
     BACKGROUND: 'flex flex-col justify-center items-center text-center min-w-fit min-h-screen p-10 bg-[url("src/assets/img/background/background4.png")] bg-cover bg-center lg:bg-[url("src/assets/img/background/background4.png")] ',
-    BACKGROUNDR: 'flex flex-col justify-center items-center min-w-fit min-h-screen p-10 overflow-auto bg-[url("src/assets/img/background/background4.png")] bg-cover bg-center bg-scroll'
+    BACKGROUNDR: 'flex flex-col justify-center items-center min-w-fit min-h-screen p-10 overflow-auto bg-[url("src/assets/img/background/registerf.jpg")] bg-cover bg-center bg-scroll'
 }
 
 //BUTTON

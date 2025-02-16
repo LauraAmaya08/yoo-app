@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import { motion } from 'framer-motion'
 import {Size, SizeBox, Backgrounds} from '../styles/LoginAnRegister/styles'
 import { Button1 } from '../components/button1/Button1'
 import { Input } from '../components/Input/Input'
@@ -13,6 +14,7 @@ export const Login = () => {
     return(
         <>
         <div className={`${Backgrounds.BACKGROUND}`}>
+            <motion.div initial={{opacity:0, scale:0.9}} animate={{opacity:1, scale:1}} transition={{duration:1}} className='flex justify-center w-full'>
             <div className={`flex bg-[#F8F8FF] rounded-xl shadow-(0px_0px_50px_10_px_rgba(0,0,0,0.2) ${SizeBox.BOX_L}`}>
                 <div className='flex flex-col w-full p-5 py-[20px] lg:py-[30px] lg:w-1/2'>
                     <section className='w-full flex justify-between px-[12px]'>
@@ -46,9 +48,13 @@ export const Login = () => {
                     </section>
                 </div>
                 <div className={`hidden lg:flex flex-col lg:w-1/2 bg-black/90 bg-cover bg-center rounded-r xl:py-[30px] xl:px-[20px] text-white items-center justify-center`}>
-
+                    <div className='w-full h-full flex flex-col items-center justify-end space-y-3 p-10 my-[5rem] xl:my-[150px]'>
+                            <img src={Logo2} alt="Logo" className="w-full h-[10vw] max-h-[150px] object-contain" />
+                            <p className={`${Size.EXTRALARGE} leading-[30px]`}>¡Descubre, comparte y conecta con la vibrante comunidad que hemos quedado para ti!</p>
+                    </div>
                 </div>
             </div>
+            </motion.div>
         </div>
         </>
     )
