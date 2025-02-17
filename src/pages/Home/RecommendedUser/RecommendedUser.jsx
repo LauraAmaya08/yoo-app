@@ -1,20 +1,23 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import ProfileNav from './ProfileNav/ProfileNav'
-import recommendUserData from './RecommendedUserData'
+import { Button } from '@material-tailwind/react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 const RecommendedUser = () => {
     const [user, setUser] = useState(null);
     const [usuariosNoSeguidos, setUsuariosNoSeguidos] = useState([])
+    const [idSeguidor, setIdSeguidor] = useState(null);
+    const [idSeguido, setIdSeguido] = useState(null);
     
     useEffect(() => {
         axios.get("http://localhost:8080/api/v1/seguimiento", {
             withCredentials: true 
         })
         .then(response => {
-            setUser(response.data);  
+            setUser(response.data);
+            setIdSeguidor(response.data.id);  
         })
         .catch(error => {
             console.error("Error al obtener los datos del usuario:", error);
@@ -22,18 +25,36 @@ const RecommendedUser = () => {
     }, []); 
 
     useEffect(() => {
-        if (user) {
-            axios.get(`http://localhost:8080/api/v1/seguimiento/${user.id}/noSeguidos`, {
+        if (user && idSeguidor) {
+            axios.get(`http://localhost:8080/api/v1/seguimiento/${idSeguidor}/noSeguidos`, {
                 withCredentials: true
             })
             .then(response => {
-                setUsuariosNoSeguidos(response.data);  
+                setUsuariosNoSeguidos(response.data);
             })
             .catch(error => {
                 console.error("Error al obtener los usuarios no seguidos:", error);
             });
         }
-    }, [user]);
+    }, [user, idSeguidor]);
+
+    const handleSeguir = async (e, usuario) => {
+        e.preventDefault();
+        setIdSeguido(usuario.id); 
+
+        if (!user || !user.id || !usuario || !usuario.id) {
+            console.log("Falta información para realizar el seguimiento");
+            return;
+        }
+        
+        try {
+            const response = await axios.post(`http://localhost:8080/api/v1/seguimiento/${user.id}/seguir/${usuario.id}`, {}, { withCredentials: true });
+            console.log("Seguimiento exitoso:", response.data);
+            setUsuariosNoSeguidos(usuariosNoSeguidos.filter(user => user.id !== usuario.id));
+        } catch (error) {
+            console.log("Error al seguir al usuario:", error);
+        }
+    };
 
     return (
         <>
@@ -60,8 +81,7 @@ const RecommendedUser = () => {
                                         <h6 className="text-xs text-gray-500 font-normal">Suggested for you</h6>
                                     </div>
                                 </Link>
-                                <Link to="/" className="text-[0.8rem] text-blue-500 hover:text-gray-200">Follow
-                                </Link>
+                                <Button onClick={(e) => handleSeguir(e, usuario)} className="text-[0.8rem] text-blue-500 hover:text-gray-200">Follow</Button>
                             </div>
                         )
                     })}
