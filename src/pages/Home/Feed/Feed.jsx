@@ -1,6 +1,7 @@
 import React from 'react'
 import TopNav from '../../../components/Header/TopNav/TopNav'
 import FeedCard from './FeedCard/FeedCard'
+import RecommendedUser from '../RecommendedUser/RecommendedUser'
 
 const Feed = () => {
     return (
@@ -16,7 +17,7 @@ const Feed = () => {
                     </div>
                 </div>
                 <div className="w-[25%] h-auto lg:block md:hidden sm:hidden hidden">
-
+                    <RecommendedUser/>
                 </div>
             </div>
         </>
