@@ -30,7 +30,7 @@ export const Login = () => {
             const response = await axios.post("http://localhost:8080/auth/login", { username, password }, { withCredentials: true });
             console.log("Entrada exitosa:", response.data);
             setErrors({ username: "", password: "", general: "" });
-            navegador('/dashboard');
+            navegador('/inicio');
         } catch (error) {
             setErrors({ ...errors, general: "Usuario o contraseña incorrectos." });
         }
