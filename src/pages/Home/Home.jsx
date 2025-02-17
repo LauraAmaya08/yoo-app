@@ -1,6 +1,6 @@
 import React from "react";
 import {Routes,Route } from "react-router-dom";
-import { NavBarComputer } from "../components/Header/NavBarComputer/NavBarComputer";
+import { NavBarComputer } from "../../components/Header/NavBarComputer/NavBarComputer";
 
 export const Home = () => {
     return (
@@ -13,6 +13,9 @@ export const Home = () => {
             </div>
             {/*Navbar movil*/}
             {/*Feed y perfiles */}
+            {/*<Routes>
+                <Route exact path="/" element={}/>
+            </Routes>*/}
         </div>
         </div>
         </>
