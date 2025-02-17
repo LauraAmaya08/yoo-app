@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import Logo from '../../../assets/img/background/logo__2_-removebg-preview.png'
 import LogoDark from '../../../assets/img/background/logo.png'
 import { useLogout } from "../../logoutButton/logout"; 
@@ -24,6 +25,27 @@ import Cerrar from '../../../assets/img/darkIcons/logout.png'
 import LightIcon from '../../../assets/img/lightIcons/logout.png'; 
 
 export const NavBarComputer = () => {
+    const [user, setUser] = useState(null);
+    
+
+
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/api/profile", {
+            withCredentials: true
+        })
+        .then(response => {
+            setUser(response.data);
+        })
+        .catch(error => {
+            console.error("Error al obtener los datos del usuario:", error);
+        });
+    }, []);
+    
+    
+    
+
+
     const { theme, toggleTheme } = useTheme(); 
     const isDarkMode = theme === "dark"
     const handleLogout = useLogout();
@@ -68,7 +90,17 @@ export const NavBarComputer = () => {
                 </Link>)
                 )}
                 <Link to='/profile' className="w-full h-auto flex items-center gap-x-4 p-3 bg-transparent rounded-md ease-out duration-500 group hover-link">
-                <img src="https://picsum.photos/200" alt='Explorar icono' className="w-8 h-8 object-cover rounded-full group-hover:scale-105 ease-out duration-300" crossOrigin="anonymous"/>
+    {/* Verificar si 'user' está cargado antes de acceder a 'fotoPerfil' */}
+    {user ? (
+        <img 
+            src={user.fotoPerfil || 'default-profile.png'} // Si no hay foto, usar una predeterminada
+            alt='Perfil icono'
+            className="w-8 h-8 object-cover rounded-full group-hover:scale-105 ease-out duration-300"
+            crossOrigin="anonymous"
+        />
+    ) : (
+        <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div> // Indicador de carga
+    )}
                 <p className="text-xl font-[Jost-Regular] lg:block md:hidden sm:hidden hidden">
                 Perfil</p>
                 </Link>
