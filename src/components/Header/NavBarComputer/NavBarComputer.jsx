@@ -44,8 +44,6 @@ export const NavBarComputer = () => {
     
     
     
-
-
     const { theme, toggleTheme } = useTheme(); 
     const isDarkMode = theme === "dark"
     const handleLogout = useLogout();
@@ -90,17 +88,16 @@ export const NavBarComputer = () => {
                 </Link>)
                 )}
                 <Link to='/profile' className="w-full h-auto flex items-center gap-x-4 p-3 bg-transparent rounded-md ease-out duration-500 group hover-link">
-    {/* Verificar si 'user' está cargado antes de acceder a 'fotoPerfil' */}
-    {user ? (
-        <img 
-            src={user.fotoPerfil || 'default-profile.png'} // Si no hay foto, usar una predeterminada
-            alt='Perfil icono'
-            className="w-8 h-8 object-cover rounded-full group-hover:scale-105 ease-out duration-300"
-            crossOrigin="anonymous"
-        />
-    ) : (
-        <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div> // Indicador de carga
-    )}
+                {user ? (
+                    <img 
+                        src={user.fotoPerfil}
+                        alt='Perfil icono'
+                        className="w-8 h-8 object-cover rounded-full group-hover:scale-105 ease-out duration-300"
+                        crossOrigin="anonymous"
+                    />
+                ) : (
+                    <div className="w-8 h-8 rounded-full bg-gray-300 animate-pulse"></div>
+                )}
                 <p className="text-xl font-[Jost-Regular] lg:block md:hidden sm:hidden hidden">
                 Perfil</p>
                 </Link>

@@ -17,14 +17,14 @@ const FeedCard = () => {
                     <div className="w-full h-auto flex items-center justify-between mb-2">
                         <div className="flex items-center gap-x-2">
                             <Link to="/" className="flex items-center justify-center flex-col flex-shrink-0">
-                                <div className="w-10 h-10 rounded-full rounded-cover p-[2px] bg-gradient-to-r from-[#f02aa6] to-[#ff6f48]">
+                                <div className="w-10 h-10 rounded-full rounded-cover p-[2px]">
                                     <img src={feed.profileImg} alt={feed.profileImg} className="rounded-full w-full h-full object-cover p-[2.5px] bg-black" />
                                 </div>
                             </Link>
                             <div className="flex items-center gap-x-2">
-                                <p className="text-white text-sm font-medium">{feed.username}</p>
+                                <p className=" text-sm font-medium">{feed.username}</p>
                                 <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-                                <p className="text-white text-sm font-medium">{feed.time}</p>
+                                <p className=" text-sm font-medium">{feed.time}</p>
                             </div>
                         </div>
                         <Ellipse/>
@@ -40,7 +40,7 @@ const FeedCard = () => {
                         </div>
                         <Save />
                     </div>
-                    <Link to="/" className="w-full h-auto flex items-center gap-x-2 text-base text-gray-200 font-medium my-2">
+                    <Link to="/" className="w-full h-auto flex items-center gap-x-2 text-base font-medium my-2">
                         <div className="flex items-center">
                             <img src={feed.mutualFrndImg1} alt={feed.likeCount} className="w-5 h-5 rounded-full object-full p-[1.5px] bg-black" />
                             <img src={feed.mutualFrndImg2} alt={feed.likeCount} className="w-5 h-5 rounded-full object-full p-[1.5px] bg-black -ml-3" />
@@ -48,8 +48,8 @@ const FeedCard = () => {
                         {feed.likeCount} likes
                     </Link>
                     <div className="w-full h-auto flex items-center gap-x-1">
-                        <div className="w-full h-auto text-sm text-gray-200 font-thin">
-                            <Link to="/" className="text-white font-medium text-sm me-1">
+                        <div className="w-full h-auto text-sm font-thin">
+                            <Link to="/" className=" font-medium text-sm me-1">
                                 {feed.username}
                             </Link>
                             {feed.caption}
