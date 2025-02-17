@@ -12,6 +12,7 @@ const FeedCard = () => {
     return (
         <>
             {instagramFeed.map((feed) => {
+                return(
                 <div key={feed.id} className="w-full h-auto mb-6">
                     <div className="w-full h-auto flex items-center justify-between mb-2">
                         <div className="flex items-center gap-x-2">
@@ -64,7 +65,7 @@ const FeedCard = () => {
                         <input type="text" className="w- h-auto bg-transparent border-none outline-none focus:outline-none text-sm text-gray-400 py-3" placeholder="Add a comment..." />
                         <Emoji/>
                     </div>
-                </div>
+                </div>);
             })}
         </>
     )

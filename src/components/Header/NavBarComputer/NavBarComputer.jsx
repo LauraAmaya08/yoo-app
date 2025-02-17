@@ -50,7 +50,7 @@ export const NavBarComputer = () => {
     ]
     return (
         <>
-        <div className="w-full h-full relative">
+        <div className= "w-[250px] h-screen fixed top-0 left-0 bg-transparent flex flex-col items-start p-5  border-r border-r-gray-500">
             <Link className="mb-10 px-2 lg:block md:block sm:block block">
             <img src={isDarkMode ? Logo : LogoDark} alt='Logo' className="w-[140px] h-auto" />
             </Link>
@@ -73,7 +73,7 @@ export const NavBarComputer = () => {
                 Perfil</p>
                 </Link>
             </div>
-            <div className="w-full h-auto absolute bottom-0 left-0 px-0">
+            <div className="w-full h-auto absolute bottom-0 left-0 px-0 ml-3">
             <button
             onClick={toggleTheme}
             className="w-full h-auto flex items-center gap-x-4 p-3 bg-transparent rounded-md ease-out duration-500 mb-5">
