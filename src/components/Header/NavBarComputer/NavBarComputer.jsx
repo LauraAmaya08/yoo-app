@@ -20,7 +20,6 @@ import CrearDark from '../../../assets/img/darkIcons/add.png'
 import CambiarModoLight from '../../../assets/img/lightIcons/toggle.png'
 import CambiarModoDark from '../../../assets/img/darkIcons/toggle.png'
 import useTheme from "../../../hook/useTheme";
-
 import Cerrar from '../../../assets/img/darkIcons/logout.png'
 import LightIcon from '../../../assets/img/lightIcons/logout.png'; 
 
@@ -87,7 +86,7 @@ export const NavBarComputer = () => {
                 {item.name}</p>
                 </Link>)
                 )}
-                <Link to='/profile' className="w-full h-auto flex items-center gap-x-4 p-3 bg-transparent rounded-md ease-out duration-500 group hover-link">
+                <Link to='profile/me' className="w-full h-auto flex items-center gap-x-4 p-3 bg-transparent rounded-md ease-out duration-500 group hover-link">
                 {user ? (
                     <img 
                         src={user.fotoPerfil}
