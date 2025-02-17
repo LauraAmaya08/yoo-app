@@ -23,6 +23,7 @@ export const Register = () => {
     const [nombreUser, setNombreUser] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({ fechaNac: "", password: "" });
+    const [succes, setSucces] = useState("");
 
     const validarFechaNac = (date) => {
         const fechaNacimiento = new Date(date);
@@ -74,6 +75,7 @@ export const Register = () => {
             const response = await axios.post("http://localhost:8080/auth/register", newUser, {
                 withCredentials: true, 
             });
+            setSucces('Usuario registrado correctamente.');
             console.log("Registro exitoso:", response.data);
         } catch (error) {
             console.error("Error en el registro:", error.response?.data || error.message);
@@ -129,6 +131,7 @@ export const Register = () => {
                                             {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
                                         </div>
                                     </div>
+                                    {succes && <p className="text-green-600 text-sm">{succes}</p>}
                                 </div>
                             </section>
                             <div className='flex justify-center w-full mb-4 mt-9'>
