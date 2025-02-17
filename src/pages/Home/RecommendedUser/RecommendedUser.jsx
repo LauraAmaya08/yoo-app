@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 const RecommendedUser = () => {
     const [user, setUser] = useState(null);
-    const [usuariosNoSeguidos, setUsuariosNoSeguidos] = useState(null)
+    const [usuariosNoSeguidos, setUsuariosNoSeguidos] = useState([])
     
     useEffect(() => {
         axios.get("http://localhost:8080/api/v1/seguimiento", {
@@ -48,20 +48,19 @@ const RecommendedUser = () => {
                             See All
                         </Link>
                     </div>
-                    {usuariosNoSeguidos.map((user) => {
+                    {usuariosNoSeguidos.map((usuario) => {
                         return (
-                            <div key={user.id} className="w-full h-auto flex items-center justify-between mb-4">
+                            <div key={usuario.id} className="w-full h-auto flex items-center justify-between mb-4">
                                 <Link to="/profile" className="w-full h-auto flex items-center gap-x-2">
-                                    <img src={user.fotoPerfil} alt={user.username} className="w-12 h-12 rounded-full object-cover" />
+                                    <img src={usuario.fotoPerfil} alt='Foto perfil' className="w-12 h-12 rounded-full object-cover" />
                                     <div className="flex items-start gap-y-0 flex-col">
-                                        <p className="text-[0.9rem] text-white font-medium mb-0">
-                                            {user.name}
+                                        <p className="text-[0.9rem] font-medium mb-0">
+                                            {usuario.nombreUser}
                                         </p>
                                         <h6 className="text-xs text-gray-500 font-normal">Suggested for you</h6>
                                     </div>
                                 </Link>
-                                <Link to="/" className="text-[0.8rem] text-blue-500 hover:text-gray-200">
-                                    {user.follow}
+                                <Link to="/" className="text-[0.8rem] text-blue-500 hover:text-gray-200">Follow
                                 </Link>
                             </div>
                         )

@@ -102,7 +102,7 @@ export const NavBarComputer = () => {
                 Perfil</p>
                 </Link>
             </div>
-            <div className="w-full h-auto absolute bottom-0 left-0 px-0 ml-3">
+            <div className="w-[225px] h-auto absolute bottom-0 left-0 px-0 ml-3">
             <button
             onClick={toggleTheme}
             className="w-full h-auto flex items-center gap-x-4 p-3 bg-transparent rounded-md ease-out duration-500 mb-5">
