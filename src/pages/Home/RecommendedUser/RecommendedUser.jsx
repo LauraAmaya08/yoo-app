@@ -2,8 +2,39 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import ProfileNav from './ProfileNav/ProfileNav'
 import recommendUserData from './RecommendedUserData'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 const RecommendedUser = () => {
+    const [user, setUser] = useState(null);
+    const [usuariosNoSeguidos, setUsuariosNoSeguidos] = useState(null)
+    
+    useEffect(() => {
+        axios.get("http://localhost:8080/api/v1/seguimiento", {
+            withCredentials: true 
+        })
+        .then(response => {
+            setUser(response.data);  
+        })
+        .catch(error => {
+            console.error("Error al obtener los datos del usuario:", error);
+        });
+    }, []); 
+
+    useEffect(() => {
+        if (user) {
+            axios.get(`http://localhost:8080/api/v1/seguimiento/${user.id}/noSeguidos`, {
+                withCredentials: true
+            })
+            .then(response => {
+                setUsuariosNoSeguidos(response.data);  
+            })
+            .catch(error => {
+                console.error("Error al obtener los usuarios no seguidos:", error);
+            });
+        }
+    }, [user]);
+
     return (
         <>
             <div className="w-full h-auto py-3">
@@ -17,14 +48,14 @@ const RecommendedUser = () => {
                             See All
                         </Link>
                     </div>
-                    {recommendUserData.map((user) => {
+                    {usuariosNoSeguidos.map((user) => {
                         return (
                             <div key={user.id} className="w-full h-auto flex items-center justify-between mb-4">
                                 <Link to="/profile" className="w-full h-auto flex items-center gap-x-2">
-                                    <img src={user.profileImg} alt={user.username} className="w-12 h-12 rounded-full object-cover" />
+                                    <img src={user.fotoPerfil} alt={user.username} className="w-12 h-12 rounded-full object-cover" />
                                     <div className="flex items-start gap-y-0 flex-col">
                                         <p className="text-[0.9rem] text-white font-medium mb-0">
-                                            {user.username}
+                                            {user.name}
                                         </p>
                                         <h6 className="text-xs text-gray-500 font-normal">Suggested for you</h6>
                                     </div>
@@ -32,7 +63,6 @@ const RecommendedUser = () => {
                                 <Link to="/" className="text-[0.8rem] text-blue-500 hover:text-gray-200">
                                     {user.follow}
                                 </Link>
-
                             </div>
                         )
                     })}
