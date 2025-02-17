@@ -19,3 +19,42 @@ html,body{
     font-family: 'Jost-Regular';
     src: url('./assets/fonts/Jost-Regular.ttf') format('truetype');
   }
+
+  :root {
+    --bg-color: white;
+    --text-color: black;
+    --hover: gray;
+    --button-text: black;
+}
+
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: white;
+    --hover: #2D3748;
+    --button-text: white;
+}
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--hover); 
+}
+
+.hover-link:hover {
+    background-color: var(--hover);
+}

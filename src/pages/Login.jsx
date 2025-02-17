@@ -46,7 +46,7 @@ export const Login = () => {
                             <IconButton id='iconBack' image={Back} style='w-[3vh] w-[3vh] max-w-[30px] max-h-[30px]'/>
                         </div>
                         <div>
-                            <p className={`${Size.LARGE} hover:text-[#0094ff]`}>
+                            <p className={`${Size.LARGE} hover:text-[#0094ff] text-black`}>
                                 <Link to='/registrar'>¿Eres nuevo? Regístrate.</Link>
                             </p>
                         </div>
@@ -54,9 +54,9 @@ export const Login = () => {
                     <section className='flex items-center justify-center w-full h-full'>
                         <form onSubmit={handleLogin} className='flex flex-col relative items-center justify-center w-full space-y-8 lg:space-y-16'>
                             <div className='flex flex-col items-center justify-center'>
-                                <h2 className={`${Size.EXTRALARGE}`}>Bienvenido a</h2>
+                                <h2 className={`${Size.EXTRALARGE} text-black`}>Bienvenido a</h2>
                                 <img src={Logo} alt="logo" className='h-[50px] md:h-[60px] lg:h-[4rem] xl:h-[5.5rem] max-w-full' />
-                                <p className={`hidden md:flex w-5/6 ${Size.LARGE} mt-5 leading-7`}>Inicia Sesión y empieza a compartir.</p>
+                                <p className={`hidden md:flex w-5/6 ${Size.LARGE} mt-5 leading-7 text-black`}>Inicia Sesión y empieza a compartir.</p>
                             </div>
 
                             <section className='flex flex-col items-center justify-center w-full xl:px-[1.5vh] space-y-3'>
