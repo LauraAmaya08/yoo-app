@@ -72,7 +72,7 @@ const RecommendedUser = () => {
                     {usuariosNoSeguidos.map((usuario) => {
                         return (
                             <div key={usuario.id} className="w-full h-auto flex items-center justify-between mb-4">
-                                <Link to="/profile" className="w-full h-auto flex items-center gap-x-2">
+                                <Link to="inicio/profile/me" className="w-full h-auto flex items-center gap-x-2">
                                     <img src={usuario.fotoPerfil} alt='Foto perfil' className="w-12 h-12 rounded-full object-cover" />
                                     <div className="flex items-start gap-y-0 flex-col">
                                         <p className="text-[0.9rem] font-medium mb-0">

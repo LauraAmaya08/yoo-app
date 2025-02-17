@@ -27,16 +27,13 @@ const Profile = () => {
                             <img 
                                 src={user.fotoPerfil}
                                 alt="Perfil icono"
-                                className="rounded-full lg:w-44 md:w-44 sm:w-36 w-32 lg:h-44 md:h-44 sm:h-36 h-36 object-cover"
+                                className="rounded-full lg:w-44 md:w-44 sm:w-36 w-36 lg:h-44 md:h-44 sm:h-36 h-36 object-cover"
                             />
                             <div className="flex items-start flex-col">
                                 <div className="flex items-center gap-x-5 mb-4">
                                     <div className="flex items-center gap-x-2">
-                                        <button className="rounded-lg px-4 py-1.5 text-base font-normal ease-aut duration-150">
+                                        <button className="rounded-lg px-4 py-1.5 text-base font-[Jost-Regular] ease-aut duration-150">
                                             Edit Profile
-                                        </button>
-                                        <button className="rounded-lg px-4 py-1.5 text-base font-normal ease-aut duration-150">
-                                            View Archive
                                         </button>
                                     </div>
                                 </div>
@@ -49,14 +46,10 @@ const Profile = () => {
                                         100 Following
                                     </Link>
                                 </div>
-                                <p className="text-base font-normal">{user.nombreUser}</p>
-                                <p className="text-base font-normal">
-                                    Jay Shree Ram <br />
-                                    Profession Account <br />
-                                    Profession Account <br />
-                                    Profession Account <br />
-                                    Profession Account <br />
-                                    Profession Account <br />
+                                <p className="text-base font-[Jost-Regular]">{user.nombreUser}</p>
+                                <p className="text-base font-[Jost-Light]">
+                                    {user.nombre} <br />
+                                    {user.biografia} <br />
                                 </p>
                             </div>
                         </>
