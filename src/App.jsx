@@ -5,6 +5,7 @@ import { Home } from './pages/Home/Home'
 import { CrearPost } from './pages/CrearPost'
 import { Followers } from './pages/Followers'
 import { Followes } from './pages/Follows'
+import { UpdateUser } from './pages/UpdateUser'
 import './index.css';
 
 
@@ -17,6 +18,7 @@ function App(){
       <Route path="/crear" element={<CrearPost/>}></Route>
       <Route path="/seguidores" element={<Followers/>}></Route>
       <Route path="/seguidos" element={<Followes/>}></Route>
+      <Route path="/actualizar" element={<UpdateUser/>}></Route>
     </Routes>
   )
 }

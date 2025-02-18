@@ -3,6 +3,7 @@ import {Posts} from './posts/Posts'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
+
 const Profile = () => {
     const [user, setUser] = useState(null);
     const [numSeguidores, setNumSeguidores] = useState(0);
@@ -62,9 +63,9 @@ const Profile = () => {
                             <div className="flex items-start flex-col">
                                 <div className="flex items-center gap-x-5 mb-4">
                                     <div className="flex items-center gap-x-2">
-                                        <button className="rounded-lg px-4 py-1.5 text-base font-[Jost-Regular] ease-aut duration-150">
+                                        <Link to="/actualizar" className="rounded-lg px-4 py-1.5 text-base font-[Jost-Regular] border border-gray-600 ease-aut duration-150">
                                             Edit Profile
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-x-6 mb-4">

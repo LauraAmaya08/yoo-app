@@ -21,8 +21,10 @@ const RecommendedUser = () => {
         })
         .catch(error => {
             console.error("Error al obtener los datos del usuario:", error);
+            console.log(user)
         });
     }, []); 
+
 
     useEffect(() => {
         if (user) {

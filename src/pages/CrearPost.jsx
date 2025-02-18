@@ -106,7 +106,7 @@ export const CrearPost = ({ user }) => {
                                         <input
                                             type='text'
                                             id='idEtiquetas'
-                                            value={etiquetas.join(" ")}  // Mostrar etiquetas como un string separado por espacios
+                                            value={etiquetas.join(" ")} 
                                             onChange={handleEtiquetasChange}
                                             className='w-full h-[3.8rem] bg-transparent p-4 border rounded-lg'
                                             placeholder='Agregar etiquetas (opcional)'

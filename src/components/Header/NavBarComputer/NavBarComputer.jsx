@@ -26,9 +26,6 @@ import LightIcon from '../../../assets/img/lightIcons/logout.png';
 export const NavBarComputer = () => {
     const [user, setUser] = useState(null);
     
-
-
-
     useEffect(() => {
         axios.get("http://localhost:8080/api/profile", {
             withCredentials: true
@@ -40,7 +37,6 @@ export const NavBarComputer = () => {
             console.error("Error al obtener los datos del usuario:", error);
         });
     }, []);
-    
     
     
     const { theme, toggleTheme } = useTheme(); 

@@ -49,15 +49,15 @@ export const Followers = () => {
                     <h1 className='text-xl font-[Jost-Regular] mb-10'>Seguidores</h1>
                     {usuariosSeguidos.map((usuario) => {
                         return (
-                            <div key={usuario.idUser.id} className="w-full h-auto flex items-center justify-evenly mb-4 ">
+                            <div key={usuario.seguido.id} className="w-full h-auto flex items-center justify-evenly mb-4 ">
                                 <Link to="inicio/profile/me" className="w-full h-auto flex items-center gap-x-2">
-                                    <img src={usuario.idUser.fotoPerfil} alt='Foto perfil' className="w-12 h-12 rounded-full object-cover" />
+                                    <img src={usuario.seguido.fotoPerfil} alt='Foto perfil' className="w-12 h-12 rounded-full object-cover" />
                                     <div className="flex items-start gap-y-0 flex-col">
                                         <p className="text-[0.9rem] font-medium mb-0">
-                                            {usuario.idUser.nombreUser}
+                                            {usuario.seguido.nombreUser}
                                         </p>
                                         <h6 className="text-[0.935rem] text-gray-500 font-normal">
-                                        {usuario.idUser.nombre}
+                                        {usuario.seguido.nombre}
                                         </h6>
                                     </div>
                                 </Link>
