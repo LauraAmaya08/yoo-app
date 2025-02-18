@@ -7,8 +7,38 @@ import Like from  '../../../../components/icons/Like'
 import Save from  '../../../../components/icons/Save'
 import Share from  '../../../../components/icons/Share'
 import Emoji from  '../../../../components/icons/Emoji'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const FeedCard = () => {
+    const [publicaciones, setPublicaciones] = useState([]);
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/api/profile", {
+            withCredentials: true
+        })
+        .then(response => {
+            setUser(response.data);
+        })
+        .catch(error => {
+            console.error("Error al obtener los datos del usuario:", error);
+        });
+    }, []);
+
+    useEffect(() => {
+    if(user){
+            axios.get(`http://localhost:8080/api/v1/publicaciones/`, {
+                withCredentials: true
+            })
+            .then(response => {
+                setPublicaciones(response.data);
+            })
+            .catch(error => {
+                console.error("Error al obtener las publicaciones:", error);
+            });
+    }}, [user]);
+
     return (
         <>
             {instagramFeed.map((feed) => {

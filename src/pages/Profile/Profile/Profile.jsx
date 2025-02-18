@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import Posts from './posts/Posts'
+import {Posts} from './posts/Posts'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
@@ -7,6 +7,7 @@ const Profile = () => {
     const [user, setUser] = useState(null);
     const [numSeguidores, setNumSeguidores] = useState(0);
     const [numSeguidos, setNumSeguidos] = useState(0);
+    
     
     useEffect(() => {
         axios.get("http://localhost:8080/api/profile", {
@@ -68,10 +69,10 @@ const Profile = () => {
                                 </div>
                                 <div className="flex items-center gap-x-6 mb-4">
                                     <h6 className="text-base font-normal">10 Posts</h6>
-                                    <Link to="/" className="text-base font-normal">
+                                    <Link to="/seguidores" className="text-base font-normal">
                                         {numSeguidores} Seguidores
                                     </Link>
-                                    <Link to="/" className="text-base font-normal">
+                                    <Link to="/seguidos" className="text-base font-normal">
                                         {numSeguidos} Seguidos
                                     </Link>
                                 </div>
@@ -90,10 +91,10 @@ const Profile = () => {
                 {user && (
                     <div className="w-full h-auto">
                         <div className="mt-4 transition-opacity duration-300 ease-out opacity-100">
-                            <Posts />
-                        </div>
+                        <Posts/>
                     </div>
-                )}
+    </div>
+)}
             </div>
         </>
     );

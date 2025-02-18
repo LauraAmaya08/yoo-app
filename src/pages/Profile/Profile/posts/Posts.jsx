@@ -1,36 +1,52 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Posts = () => {
+export const Posts = () => {
+    const [publicaciones, setPublicaciones] = useState([]);
+    const [user, setUser] = useState();
+
+    /*useEffect(() => {
+        axios.get("http://localhost:8080/api/profile", {
+            withCredentials: true
+        })
+        .then(response => {
+            setUser(response.data);
+        })
+        .catch(error => {
+            console.error("Error al obtener los datos del usuario:", error);
+        });
+    }, []);
+
+    useEffect(() => {
+    if(user){
+            axios.get(`http://localhost:8080/api/v1/publicaciones/userPublic/${user.id}`, {
+                withCredentials: true
+            })
+            .then(response => {
+                setPublicaciones(response.data);
+            })
+            .catch(error => {
+                console.error("Error al obtener las publicaciones:", error);
+            });
+    }}, [user]);
+
+    
+
     return (
         <>
             <div className="w-full h-auto flex items-center gap-1 flex-wrap">
-                <Link to="/" className="lg:w-[33%] md:w-[33%] sm:w-[32.5%] w-[33%] lg:h-[40%] md:h-[35%] sm:h-[30%] h-[25%]" style={{
-                    backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png")`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat"
-                }}/>
-                <Link to="/" className="lg:w-[33%] md:w-[33%] sm:w-[32.5%] w-[33%] lg:h-[40%] md:h-[35%] sm:h-[30%] h-[25%]" style={{
-                    backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png")`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat"
-                }}/>
-                <Link to="/" className="lg:w-[33%] md:w-[33%] sm:w-[32.5%] w-[33%] lg:h-[40%] md:h-[35%] sm:h-[30%] h-[25%]" style={{
-                    backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png")`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat"
-                }}/>
-                <Link to="/" className="lg:w-[33%] md:w-[33%] sm:w-[32.5%] w-[33%] lg:h-[40%] md:h-[35%] sm:h-[30%] h-[25%]" style={{
-                    backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png")`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat"
-                }}/>
+                    {publicaciones.map((publicacion) => {
+                        console.log(publicacion.imagen)
+                        return (
+                            <div key={publicacion.id}>
+                                <Link to="inicio" className="w-[200px] h-[200px] bg-cover bg-center" style={publicacion.imagen ? { backgroundImage: `url(${publicacion.imagen})` } : {}}>
+                                {publicacion.texto}
+                                </Link>
+                            </div>
+                        )
+                    })}
             </div>
         </>
-    )
+    )*/
 }
-
-export default Posts
