@@ -83,7 +83,9 @@ const RecommendedUser = () => {
                                         <p className="text-[0.9rem] font-medium mb-0">
                                             {usuario.nombreUser}
                                         </p>
-                                        <h6 className="text-xs text-gray-500 font-normal">Suggested for you</h6>
+                                        <h6 className="text-[0.935rem] text-gray-500 font-normal">
+                                        {usuario.nombre}
+                                        </h6>
                                     </div>
                                 </Link>
                                 <Button onClick={(e) => handleSeguir(e, usuario)} className="text-[0.8rem] text-blue-500 hover:text-gray-200">Follow</Button>

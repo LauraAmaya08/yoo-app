@@ -31,7 +31,7 @@ const ProfileNav = () => {
                     <img src={user.fotoPerfil} alt="profileImg" className="w-12 h-12 rounded-full" crossOrigin="anonymous" />
                     <div className='flex flex-col'>
                     <p className="text-[0.9rem] font-medium mb-0">
-                    {user.username}
+                    {user.nombreUser}
                     </p>
                     <h6 className="text-[0.935rem] text-gray-500 font-normal">
                     {user.nombre}
