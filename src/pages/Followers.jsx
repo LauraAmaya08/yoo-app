@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { NavBarComputer } from '../components/Header/NavBarComputer/NavBarComputer'
-NavBarComputer
 
 export const Followers = () => {
     const [user, setUser] = useState(null);
