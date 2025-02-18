@@ -80,8 +80,8 @@ const FeedCard = () => {
                     {/* Botones de interacción */}
                     <div className="w-full h-auto flex items-center justify-between">
                         <div className="flex items-center gap-x-3">
-                            <button onClick={() => handleLikes(publicacion.id)}>
-                                <Like />
+                            <button onClick={() => handleLikes()}>
+                                <Like publicacionId={publicacion.id} usuarioId={publicacion.usuario.id} />
                             </button>
                             <button onClick={() => handleComments(publicacion.id)}>
                                 <Comment />

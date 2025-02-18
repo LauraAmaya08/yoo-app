@@ -3,7 +3,7 @@ import React from "react";
 const Comment = () => {
     return (
         <>
-        <button className="text-sm text-gray-200 -rotate-90">
+        <button className="text-sm -rotate-90">
             <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
