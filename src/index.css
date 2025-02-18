@@ -25,6 +25,8 @@ html,body{
     --text-color: black;
     --hover: gray;
     --button-text: black;
+    --border: black;
+    --placeholder:white;
 }
 
 
@@ -33,6 +35,8 @@ html,body{
     --text-color: white;
     --hover: #2D3748;
     --button-text: white;
+    --border:white;
+    --placeholder:black;
 }
 
 

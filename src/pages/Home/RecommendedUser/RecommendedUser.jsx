@@ -25,12 +25,15 @@ const RecommendedUser = () => {
     }, []); 
 
     useEffect(() => {
-        if (user && idSeguidor) {
-            axios.get(`http://localhost:8080/api/v1/seguimiento/${idSeguidor}/noSeguidos`, {
+        if (user) {
+            axios.get(`http://localhost:8080/api/v1/seguimiento/${user.id}/noSeguidos`, {
                 withCredentials: true
             })
             .then(response => {
-                setUsuariosNoSeguidos(response.data);
+                console.log(response.data)
+                const usuarios = Array.isArray(response.data) ? response.data : [];
+                setUsuariosNoSeguidos(usuarios);
+                console.log(usuarios); 
             })
             .catch(error => {
                 console.error("Error al obtener los usuarios no seguidos:", error);
