@@ -44,10 +44,10 @@ Este sistema está diseñado para ser escalable, seguro y eficiente, utilizando 
 _(Más detalles en la documentación de la API)_
 
 ## Enlaces
-- [Repositorio Backend](https://github.com/tu-usuario/backend-repo)
+- [Repositorio Backend](https://github.com/LauraAmaya08/Yoo-Api)
 
 ## Últimos Hashes de Commits
 ### Backend:
 ```
-Último commit: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Último commit: 543991a9119d1aa943cdf327e10be0ea50aeab20
 ```
