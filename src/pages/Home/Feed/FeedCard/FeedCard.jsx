@@ -11,6 +11,7 @@ const FeedCard = () => {
     const [user, setUser] = useState(null);
     const [likes, setLikes] = useState({});
     const [comentarios, setComentarios] = useState({});
+    const [likesCantidad, setLikesCantidad] = useState({});
 
     useEffect(() => {
         axios.get("http://localhost:8080/api/v1/seguimiento", { withCredentials: true })
@@ -26,13 +27,20 @@ const FeedCard = () => {
         }
     }, [user]);
 
-    const handleLikes = async (publicacionId) => {
-        axios.get(`http://localhost:8080/api/v1/likes/${publicacionId}/publicaciones`, { withCredentials: true })
-            .then(response => {
-                setLikes(prevLikes => ({ ...prevLikes, [publicacionId]: response.data }));
-            })
-            .catch(error => console.error("Error al obtener los likes:", error));
-    };
+    useEffect(() => {
+        publicaciones.forEach(publicacion => {
+            if (publicacion?.id) {
+                axios.get(`http://localhost:8080/api/v1/likes/contar/${publicacion.id}`, { withCredentials: true })
+                    .then(response => {
+                        setLikesCantidad(prevLikes => ({
+                            ...prevLikes,
+                            [publicacion.id]: response.data
+                        }));
+                    })
+                    .catch(error => console.error(`Error al obtener likes de la publicación ${publicacion.id}:`, error));
+            }
+        });
+    }, [publicaciones]);
 
     const handleComments = async (publicacionId) => {
         axios.get(`http://localhost:8080/api/v1/comentarios/contar/${publicacionId}`, { withCredentials: true })
@@ -42,7 +50,6 @@ const FeedCard = () => {
             .catch(error => console.error("Error al obtener los comentarios:", error));
     };
 
-    console.log(publicaciones)
 
     return (
         <>
@@ -80,18 +87,14 @@ const FeedCard = () => {
                     {/* Botones de interacción */}
                     <div className="w-full h-auto flex items-center justify-between">
                         <div className="flex items-center gap-x-3">
-                            <button onClick={() => handleLikes()}>
-                                <Like publicacionId={publicacion.id} usuarioId={publicacion.usuario.id} />
-                            </button>
-                            <button onClick={() => handleComments(publicacion.id)}>
-                                <Comment />
-                            </button>
+                            <Like publicacionId={publicacion.id} usuarioId={publicacion.usuario.id} />
+                            <Comment />
                         </div>
                     </div>
 
                     {/* Likes y comentarios */}
                     <Link to="/" className="w-full h-auto flex items-center gap-x-2 text-base font-medium my-2">
-                        {likes[publicacion.id] || 0} likes
+                        {likesCantidad[publicacion.id] || 0} likes
                     </Link>
                     <div className="w-full h-auto flex items-center gap-x-1">
                         <div className="w-full h-auto text-sm font-thin">
